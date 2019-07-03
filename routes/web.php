@@ -97,7 +97,7 @@ $router->group(
 
 //Rotas parte Administrativa Certificado
 $router->group(
-    ['prefix' => '/admin'],
+    ['namespace' => '\App\Certificado\Http\Controllers', 'prefix' => '/admin'],
     function () use ($router) {
 
         //Rotas Módulo Certificado
@@ -105,14 +105,28 @@ $router->group(
             '/certificado',
             [
             'as' => 'cadastrar-certificado',
-            'uses' => '\App\Certificado\Http\Controllers\CadastrarCertificado@cadastrar'
+            'uses' => 'Certificado@cadastrar'
             ]
         );
         $router->get(
             '/certificados',
             [
             'as' => 'listar-certificados',
-            'uses' => '\App\Certificado\Http\Controllers\ListarCertificado@listar'
+            'uses' => 'Certificado@listar'
+            ]
+        );
+        $router->delete(
+            '/certificado/{id}',
+            [
+                'as' => 'excluir-certificados',
+                'uses' => 'Certificado@excluir'
+            ]
+        );
+        $router->put(
+            '/certificado/{id}',
+            [
+                'as' => 'atualizar-certificado',
+                'uses' => 'Certificado@atualizar'
             ]
         );
     }

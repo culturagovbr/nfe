@@ -16,6 +16,10 @@ class Cert extends Eloquent
     protected $collection = 'cert';
     protected $dates = ['dhResp'];
 
+    protected $fillable = [
+        'razaosocial', 'cnpj', 'tpAmb', 'pass'
+    ];
+
     public function getDhResp()
     {
         $date = Carbon::create($this->dhResp->toDateTimeString());
